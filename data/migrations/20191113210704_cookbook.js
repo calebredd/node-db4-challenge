@@ -62,7 +62,21 @@ exports.up = function(knex) {
         .unsigned()
         .onUpdate("CASCADE")
         .onDelete("CASCADE");
-      tbl.primary(["recipe_id", "step_id"]);
+
+      tbl
+        .integer("ingredient_id")
+        .references("id")
+        .inTable("ingredients")
+        .notNullable()
+        .unsigned()
+        .onUpdate("CASCADE")
+        .onDelete("CASCADE");
+      tbl
+        .integer("orderStep")
+        .notNullable()
+        .unsigned();
+
+      tbl.primary(["recipe_id", "step_id", "ingredient_id"]);
     });
 };
 
@@ -70,6 +84,7 @@ exports.down = function(knex) {
   return knex.schema
     .dropTableIfExists("recipes_steps")
     .dropTableIfExists("recipes_ingredients")
+    .dropTableIfExists("steps")
     .dropTableIfExists("ingredients")
     .dropTableIfExists("recipes");
 };
