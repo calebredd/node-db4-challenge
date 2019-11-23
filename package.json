@@ -1,0 +1,44 @@
+{
+  "name": "recipe-book",
+  "version": "1.0.0",
+  "description": "Caleb & Joni's Family Recipes",
+  "main": "index.js",
+  "dependencies": {
+    "concurrently": "^5.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "knex": "^0.20.2",
+    "nodemon": "^2.0.1",
+    "sqlite3": "^4.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "client-start": "cd client && npm i",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"npm run server\" && \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calebredd/node-db4-challenge.git"
+  },
+  "keywords": [
+    "Recipes",
+    "Ingredients",
+    "Vegan",
+    "Fresh",
+    "Whole",
+    "Plant",
+    "Food",
+    "Based",
+    "WFPB"
+  ],
+  "author": "Caleb Redd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/calebredd/node-db4-challenge/issues"
+  },
+  "homepage": "https://github.com/calebredd/node-db4-challenge#readme"
+}
