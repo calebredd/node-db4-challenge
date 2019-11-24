@@ -20,7 +20,11 @@ router.get("/api/recipes", (req, res) => {
 router.get("/api/recipes/:id", (req, res) => {
   db.findById(req.params.id)
     .then(recipe => {
-      res.status(200).json(recipe);
+      if (recipe.length > 0) {
+        res.status(200).json(recipe);
+      } else {
+        res.status(404).send("Error 404: Page Not Found");
+      }
     })
     .catch(() => {
       res.status(500).json({ errorMessage: "Unable to access recipe details" });

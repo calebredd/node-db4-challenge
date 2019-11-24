@@ -19,31 +19,19 @@ function update(id, recipeData) {
     .update(recipeData);
 }
 function findIngredients(id) {
-  return db("recipes as r")
-    .join("recipes_ingredients as r_i", "r_i.recipeId", "r.id")
+  return db("recipes_ingredients as r_i")
+    .where({ recipeId: id })
+    .join("recipes as r", "r.id", "r_i.recipeId")
     .join("ingredients as i", "i.id", "r_i.ingredientId")
-    .select(
-      "r.id",
-      "r.recipeName",
-      "i.ingredientName",
-      "r_i.quantity",
-      "r_i.measurement"
-    )
-    .where({ id });
+    .select("i.ingredientName", "r_i.quantity", "r_i.measurement");
 }
 function findSteps(id) {
-  return db("recipes as r")
-    .join("recipes_steps as r_s", "r_s.recipeId", "r.id")
-    .join("steps as s", "s.id", "r_s.stepsId")
-    .select(
-      "r.id",
-      "r.recipeName",
-      "s.stepNumber",
-      "s.stepName",
-      "s.stepDescription"
-    )
-    .where({ id })
-    .orderBy("r_s.stepNumber");
+  return db("recipes_steps as r_s")
+    .where({ recipeId: id })
+    .join("recipes as r", "r.id", "r_s.recipeId")
+    .join("steps as s", "s.id", "r_s.stepId")
+    .select("r_s.stepOrder", "s.stepName", "s.stepDescription")
+    .orderBy("r_s.stepOrder");
 }
 
 module.exports = {
