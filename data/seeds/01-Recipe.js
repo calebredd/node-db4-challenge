@@ -11,7 +11,7 @@ exports.seed = function(knex) {
             "The simplest lunchtime nostalgic sandwich of American Childhood! Peanut Butter stuck to your tongue and Jelly for your Sweet Tooth. With a glass of Milk it becomes a Fancy Combo!"
         },
         {
-          recipeName: "Hame-n-Swiss",
+          recipeName: "Ham-n-Swiss",
           recipeDescription:
             "When you're feeling fancy and want to sink your teeth into something, this is the go-to sandwich for a Saturday afternoon!"
         },

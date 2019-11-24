@@ -66,7 +66,7 @@ router.delete("/api/recipes/:id", (req, res) => {
         .json({ errorMessage: "Unable to remove Recipe from database" });
     });
 });
-router.get("/api/recipes/:id/shoppingList", (req, res) => {
+router.get("/api/recipes/:id/ingredients", (req, res) => {
   db.findIngredients(req.params.id)
     .then(ingredients => {
       res.status(200).json(ingredients);
